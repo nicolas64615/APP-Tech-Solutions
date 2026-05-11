@@ -3,78 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Desempeño - TechSolutions</title>
+    <title>Evaluación de Desempeño Laboral</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Evaluación de Desempeño</h1>
-        <form id="formulario-evaluacion" novalidate>
-          
-            <div class="campo">
+    <main class="contenedor">
+        <header class="cabecera">
+            <h1>Evaluación de Desempeño Laboral</h1>
+            <p>Ingresa los datos del colaborador y los puntajes por criterio</p>
+        </header>
+
+        <form id="formularioEvaluacion" novalidate>
+            <div class="grupo-input">
                 <label for="nombre">Nombre del colaborador</label>
-                <input type="text" id="nombre" placeholder="Ej: Ana López" required>
-            </div>
-            <div class="campo">
-                <label for="cargo">Cargo del colaborador</label>
-                <input type="text" id="cargo" placeholder="Ej: Desarrolladora Frontend" required>
+                <input type="text" id="nombre" placeholder="Ej: María González" required>
             </div>
 
-            
-            <h2>Criterios de evaluación</h2>
-            <div class="criterios-grid">
-                <div class="cabecera-criterios">
-                    <span class="col-criterio">Criterio</span>
-                    <span class="col-puntaje">Puntaje (1-10)</span>
-                    <span class="col-peso">Peso (%)</span>
+            <div class="grupo-input">
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" placeholder="Ej: Analista de Proyectos" required>
+            </div>
+
+            <div class="grilla-criterios">
+                <div class="encabezados">
+                    <span>CRITERIO</span>
+                    <span>PUNTAJE (1-10)</span>
+                    <span>PESO (%)</span>
                 </div>
-                
+
                 <div class="fila-criterio">
-                    <input type="text" class="nombre-criterio" value="Puntualidad" placeholder="Criterio">
-                    <input type="number" class="puntaje" min="1" max="10" value="9" placeholder="1-10">
-                    <input type="number" class="peso" min="0" max="100" value="15" placeholder="%">
+                    <input type="text" id="nombreCriterio1" value="Puntualidad">
+                    <input type="number" id="puntaje1" min="1" max="10" step="0.1" placeholder="1-10">
+                    <input type="number" id="peso1" min="0" max="100" class="input-peso" placeholder="%">
                 </div>
-                
+
                 <div class="fila-criterio">
-                    <input type="text" class="nombre-criterio" value="Trabajo en equipo" placeholder="Criterio">
-                    <input type="number" class="puntaje" min="1" max="10" value="8" placeholder="1-10">
-                    <input type="number" class="peso" min="0" max="100" value="20" placeholder="%">
+                    <input type="text" id="nombreCriterio2" value="Trabajo en equipo">
+                    <input type="number" id="puntaje2" min="1" max="10" step="0.1" placeholder="1-10">
+                    <input type="number" id="peso2" min="0" max="100" class="input-peso" placeholder="%">
                 </div>
-                
+
                 <div class="fila-criterio">
-                    <input type="text" class="nombre-criterio" value="Calidad del trabajo" placeholder="Criterio">
-                    <input type="number" class="puntaje" min="1" max="10" value="7" placeholder="1-10">
-                    <input type="number" class="peso" min="0" max="100" value="30" placeholder="%">
+                    <input type="text" id="nombreCriterio3" value="Calidad del trabajo">
+                    <input type="number" id="puntaje3" min="1" max="10" step="0.1" placeholder="1-10">
+                    <input type="number" id="peso3" min="0" max="100" class="input-peso" placeholder="%">
                 </div>
-                
+
                 <div class="fila-criterio">
-                    <input type="text" class="nombre-criterio" value="Productividad" placeholder="Criterio">
-                    <input type="number" class="puntaje" min="1" max="10" value="8" placeholder="1-10">
-                    <input type="number" class="peso" min="0" max="100" value="25" placeholder="%">
+                    <input type="text" id="nombreCriterio4" value="Productividad">
+                    <input type="number" id="puntaje4" min="1" max="10" step="0.1" placeholder="1-10">
+                    <input type="number" id="peso4" min="0" max="100" class="input-peso" placeholder="%">
                 </div>
-                
+
                 <div class="fila-criterio">
-                    <input type="text" class="nombre-criterio" value="Iniciativa" placeholder="Criterio">
-                    <input type="number" class="puntaje" min="1" max="10" value="9" placeholder="1-10">
-                    <input type="number" class="peso" min="0" max="100" value="10" placeholder="%">
+                    <input type="text" id="nombreCriterio5" value="Iniciativa">
+                    <input type="number" id="puntaje5" min="1" max="10" step="0.1" placeholder="1-10">
+                    <input type="number" id="peso5" min="0" max="100" class="input-peso" placeholder="%">
                 </div>
             </div>
 
-            
-            <div id="errores" class="errores"></div>
+            <div class="resumen-pesos">
+                <span>Suma actual de pesos:</span>
+                <span id="sumaPesosActual">0%</span>
+            </div>
 
-            
-            <button type="submit" id="btn-calcular">Calcular evaluación</button>
+            <div id="contenedorErrores" class="oculto"></div>
 
-            
-            <div id="resultado" class="resultado oculto">
-                <h3>Resultado de la evaluación</h3>
-                <p id="nombre-resultado"></p>
-                <p id="nota-final"></p>
-                <p id="categoria"></p>
+            <button type="submit" id="btnCalcular">Calcular evaluación</button>
+
+            <div id="contenedorResultado" class="oculto">
+                <h3 id="resultadoNombre">&nbsp;</h3>
+                <p>Nota Final: <strong id="resultadoNota"></strong></p>
+                <p>Categoría: <strong id="resultadoCategoria"></strong></p>
             </div>
         </form>
-    </div>
+    </main>
+    
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Desempeño - TechSolutions</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Evaluación de Desempeño</h1>
+        <form id="formulario-evaluacion" novalidate>
+          
+            <div class="campo">
+                <label for="nombre">Nombre del colaborador</label>
+                <input type="text" id="nombre" placeholder="Ej: Ana López" required>
+            </div>
+            <div class="campo">
+                <label for="cargo">Cargo del colaborador</label>
+                <input type="text" id="cargo" placeholder="Ej: Desarrolladora Frontend" required>
+            </div>
+
+            
+            <h2>Criterios de evaluación</h2>
+            <div class="criterios-grid">
+                <div class="cabecera-criterios">
+                    <span class="col-criterio">Criterio</span>
+                    <span class="col-puntaje">Puntaje (1-10)</span>
+                    <span class="col-peso">Peso (%)</span>
+                </div>
+                
+                <div class="fila-criterio">
+                    <input type="text" class="nombre-criterio" value="Puntualidad" placeholder="Criterio">
+                    <input type="number" class="puntaje" min="1" max="10" value="9" placeholder="1-10">
+                    <input type="number" class="peso" min="0" max="100" value="15" placeholder="%">
+                </div>
+                
+                <div class="fila-criterio">
+                    <input type="text" class="nombre-criterio" value="Trabajo en equipo" placeholder="Criterio">
+                    <input type="number" class="puntaje" min="1" max="10" value="8" placeholder="1-10">
+                    <input type="number" class="peso" min="0" max="100" value="20" placeholder="%">
+                </div>
+                
+                <div class="fila-criterio">
+                    <input type="text" class="nombre-criterio" value="Calidad del trabajo" placeholder="Criterio">
+                    <input type="number" class="puntaje" min="1" max="10" value="7" placeholder="1-10">
+                    <input type="number" class="peso" min="0" max="100" value="30" placeholder="%">
+                </div>
+                
+                <div class="fila-criterio">
+                    <input type="text" class="nombre-criterio" value="Productividad" placeholder="Criterio">
+                    <input type="number" class="puntaje" min="1" max="10" value="8" placeholder="1-10">
+                    <input type="number" class="peso" min="0" max="100" value="25" placeholder="%">
+                </div>
+                
+                <div class="fila-criterio">
+                    <input type="text" class="nombre-criterio" value="Iniciativa" placeholder="Criterio">
+                    <input type="number" class="puntaje" min="1" max="10" value="9" placeholder="1-10">
+                    <input type="number" class="peso" min="0" max="100" value="10" placeholder="%">
+                </div>
+            </div>
+
+            
+            <div id="errores" class="errores"></div>
+
+            
+            <button type="submit" id="btn-calcular">Calcular evaluación</button>
+
+            
+            <div id="resultado" class="resultado oculto">
+                <h3>Resultado de la evaluación</h3>
+                <p id="nombre-resultado"></p>
+                <p id="nota-final"></p>
+                <p id="categoria"></p>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

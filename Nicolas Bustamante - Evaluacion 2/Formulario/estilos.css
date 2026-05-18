@@ -6,150 +6,193 @@
 }
 
 body {
-    background-color: #f4f7f6;
+    background-color: #f4f6f9;
     display: flex;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 2rem 1rem;
     color: #333;
 }
 
 .contenedor {
-    background-color: #fff;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
     width: 100%;
-    max-width: 500px;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-left: 8px solid #4a6fa5;
+    max-width: 550px;
+    border-left: none; /* Elimina la barra lateral azul */
 }
 
 .cabecera {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
 }
 
 .cabecera h1 {
     font-size: 1.5rem;
-    color: #2c3e50;
-    margin-bottom: 5px;
+    color: #1e293b;
+    margin-bottom: 0.3rem;
 }
 
 .cabecera p {
     font-size: 0.9rem;
-    color: #7f8c8d;
+    color: #64748b;
 }
 
+/* Campos de nombre y cargo */
 .grupo-input {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
 }
 
 .grupo-input label {
     font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.3rem;
     font-size: 0.9rem;
-    margin-bottom: 5px;
-    color: #2c3e50;
 }
 
-input[type="text"], input[type="number"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+input[type="text"],
+input[type="number"] {
+    padding: 0.7rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
     font-size: 1rem;
+    transition: border-color 0.2s;
+    width: 100%;
 }
 
 input:focus {
     outline: none;
-    border-color: #4a6fa5;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
 }
 
+/* Tabla de criterios */
 .grilla-criterios {
-    margin-top: 25px;
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .encabezados {
-    display: grid;
-    grid-template-columns: 2fr 1fr 80px;
-    gap: 10px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    color: #7f8c8d;
-    margin-bottom: 10px;
+    display: flex;
+    padding: 0 0.5rem;
+    margin-bottom: 0.3rem;
 }
+
+.encabezados span {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.encabezados span:nth-child(1) { flex: 3; }
+.encabezados span:nth-child(2) { flex: 1.5; text-align: center; }
+.encabezados span:nth-child(3) { flex: 1; text-align: center; }
 
 .fila-criterio {
-    display: grid;
-    grid-template-columns: 2fr 1fr 80px;
-    gap: 10px;
-    margin-bottom: 10px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
-.input-peso {
-    width: 100%;
+.fila-criterio input {
+    padding: 0.6rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
 }
 
+.fila-criterio input:focus {
+    border-color: #0284c7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+.fila-criterio input:nth-child(1) { flex: 3; }
+.fila-criterio input:nth-child(2) { flex: 1.5; text-align: center; }
+.fila-criterio input:nth-child(3) { flex: 1; text-align: center; }
+
+/* Suma actual de pesos */
 .resumen-pesos {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 4px;
+    background-color: #f1f5f9;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #4a6fa5;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #3b5983;
-}
-
-/* Clases dinámicas y alertas */
-.oculto {
-    display: none !important;
-}
-
-#contenedorErrores {
-    background-color: #fdeaea;
-    color: #d93025;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    border-left: 4px solid #d93025;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 1.2rem;
     font-size: 0.9rem;
 }
 
-#contenedorErrores ul {
-    margin-left: 20px;
-    margin-top: 5px;
+/* Mensajes de error */
+#contenedorErrores {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    border-left: 4px solid #b91c1c;
 }
 
+#contenedorErrores ul {
+    margin-left: 1.2rem;
+    margin-top: 0.4rem;
+}
+
+/* Botón de calcular */
+button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+button:hover {
+    background: #0369a1;
+}
+
+/* Resultado */
 #contenedorResultado {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 4px;
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 10px;
     text-align: center;
+    border: 2px solid #e2e8f0;
 }
 
 #contenedorResultado h3 {
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
 }
 
-/* Colores de categorías */
-.bg-excelente { background-color: #e6f4ea; color: #137333; border: 1px solid #137333;}
-.bg-bueno { background-color: #e8f0fe; color: #1a73e8; border: 1px solid #1a73e8;}
-.bg-regular { background-color: #fef7e0; color: #b06000; border: 1px solid #b06000;}
-.bg-insuficiente { background-color: #fce8e6; color: #c5221f; border: 1px solid #c5221f;}
+#contenedorResultado p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: #334155;
+}
+
+/* Colores por categoría */
+.bg-excelente      { background-color: #d1fae5; border-color: #34d399; color: #065f46; }
+.bg-bueno          { background-color: #dbeafe; border-color: #60a5fa; color: #1e40af; }
+.bg-regular        { background-color: #ffedd5; border-color: #fbbf24; color: #92400e; }
+.bg-insuficiente   { background-color: #fee2e2; border-color: #f87171; color: #991b1b; }
+
+.oculto {
+    display: none !important;
+}
